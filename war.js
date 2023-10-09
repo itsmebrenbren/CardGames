@@ -33,7 +33,7 @@ function deal(deck){
     }
 }
 //check for winner
-async function checkWinner(playerOne, playerTwo){
+function checkWinner(playerOne, playerTwo){
     console.log('check winner', playerOne.length, playerTwo.length)
     if(!playerTwo.length){
         console.log('PLAYER ONE WINS!');
@@ -47,7 +47,7 @@ async function checkWinner(playerOne, playerTwo){
 }
 
 // each player draws a card
-async function draw(playerOne, playerTwo, numCards){
+function draw(playerOne, playerTwo, numCards){
         for(let i = 0; i < numCards; i ++){
             if(playerOne.length > 0 && playerTwo.length > 0){
               let toTable1 = playerOne.shift();
@@ -60,7 +60,7 @@ async function draw(playerOne, playerTwo, numCards){
 }
 
 //compares cards drawn by playerOne and playerTwo
-async function compareCards(){
+function compareCards(){
         if(!playerOne.length || !playerTwo.length){
             return 'Yay'
         }
@@ -79,7 +79,7 @@ async function compareCards(){
 }
 
 //Process of redrawing cards and comparing them again if they are equal
-async function equalCards(){
+function equalCards(){
     if(playerOne.length < 4){
         return console.log('PLAYER TWO WINS!!!!');
     } else if(playerTwo.length < 4){
@@ -95,7 +95,7 @@ async function equalCards(){
 }
 
 // plays war until a player wins
-async function play(playerOne, playerTwo){
+function play(playerOne, playerTwo){
     checkWinner(playerOne, playerTwo);
         while(winner === false){
             draw(playerOne, playerTwo, 1);
@@ -110,7 +110,6 @@ async function play(playerOne, playerTwo){
         
 }
 
-// playerOne.length > 0 && playerTwo.length > 0
 
 shuffle(deck);
 deal(deck);

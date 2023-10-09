@@ -35,10 +35,10 @@ function deal(deck){
 //check for winner
 async function checkWinner(playerOne, playerTwo){
     console.log('check winner', playerOne.length, playerTwo.length)
-    if(playerOne.length === 52){
+    if(!playerTwo.length){
         console.log('PLAYER ONE WINS!');
         return winner = true;
-    } else if(playerTwo.length === 52){
+    } else if(!playerOne.length){
         console.log('PLAYER TWO WINS!');
         return winner = true;
     } else {
@@ -61,7 +61,7 @@ async function draw(playerOne, playerTwo, numCards){
 
 //compares cards drawn by playerOne and playerTwo
 async function compareCards(){
-        if(!playerOne[0].rank || !playerTwo[0].rank){
+        if(!playerOne.length || !playerTwo.length){
             return 'Yay'
         }
         if(table[table.length-2].rank < table[table.length-1].rank){
@@ -86,7 +86,7 @@ async function equalCards(){
         return console.log('PLAYER ONE WINS!!!!')
     } else {
         console.log('EQUAL');
-        await draw(playerOne, playerTwo, 4);
+        draw(playerOne, playerTwo, 4);
         console.log('table: ', table);
         console.log('table last two cards: ', table[table.length-1], table[table.length-2]);
         compareCards();

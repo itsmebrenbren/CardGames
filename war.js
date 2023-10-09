@@ -34,6 +34,7 @@ function deal(deck){
 }
 //check for winner
 async function checkWinner(playerOne, playerTwo){
+    console.log('check winner', playerOne.length, playerTwo.length)
     if(playerOne.length === 52){
         console.log('PLAYER ONE WINS!');
         return winner = true;
@@ -60,6 +61,9 @@ async function draw(playerOne, playerTwo, numCards){
 
 //compares cards drawn by playerOne and playerTwo
 async function compareCards(){
+        if(!playerOne[0].rank || !playerTwo[0].rank){
+            return 'Yay'
+        }
         if(table[table.length-2].rank < table[table.length-1].rank){
             let toPlayer2 = table.splice(0, table.length);
             playerTwo.push(...toPlayer2);
@@ -95,7 +99,12 @@ async function play(playerOne, playerTwo){
     checkWinner(playerOne, playerTwo);
         while(winner === false){
             draw(playerOne, playerTwo, 1);
-            console.log('table :', table);
+            console.log(' No winner yet...table :', table);
+            checkWinner(playerOne, playerTwo);
+            if(winner === true){
+                console.log('Game over')
+                break
+            }
             compareCards();
         }  
         
@@ -113,3 +122,7 @@ console.log('player One hand length: ', playerOne.length);
 console.log('player Two hand length: ', playerTwo.length);
 console.log('table length: ', table.length);
 console.log('deck length: ', deck.length);
+
+if(winner === true){
+    console.log('Turds')
+}

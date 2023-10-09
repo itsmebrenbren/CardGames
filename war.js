@@ -1,128 +1,123 @@
 let deck = require('./deckOfCards.js'); //imports deck into the game
-let playerOne = []; //establishes players
-let playerTwo = [];
-let table = [];
 
-//Fischer-Yates-Durstenfeld shuffle
-function fischerYatesDurstenfeld(deck) {
-    for (let i = 0; i < deck.length - 1; i++) {
-        let j = i + Math.floor(Math.random() * (deck.length - i));
-
-        let temp = deck[j];
-        deck[j] = deck[i];
-        deck[i] = temp;
+class Game {
+    constructor() {
+        // Initialize player decks and table
+        this.deck = deck;
+        this.playerOne = [];
+        this.playerTwo = [];
+        this.table = [];
+        this.winner = false;
     }
-    return deck;
-}
-//shuffles multiple times
-function shuffle(deck){
-    for(let i = 1; i < 5; i++){
-        fischerYatesDurstenfeld(deck);
-    }
-    return deck;
-}
 
-//deals the entire deck of cards to players one and two
-function deal(deck){
-    while(deck.length > 0){
-    let toPlayer1 = deck.splice(0, 1)[0];
-    playerOne.push(toPlayer1);
+    // Fischer-Yates-Durstenfeld shuffle
+    fischerYatesDurstenfeld() {
+        for (let i = 0; i < this.deck.length - 1; i++) {
+            let j = i + Math.floor(Math.random() * (this.deck.length - i));
 
-    let toPlayer2 = deck.splice(0, 1)[0];
-    playerTwo.push(toPlayer2);
+            let temp = this.deck[j];
+            this.deck[j] = this.deck[i];
+            this.deck[i] = temp;
+        }
+        return this.deck;
     }
-}
-//check for winner
-async function checkWinner(playerOne, playerTwo){
-    console.log('check winner', playerOne.length, playerTwo.length)
-    if(!playerTwo.length){
-        console.log('PLAYER ONE WINS!');
-        return winner = true;
-    } else if(!playerOne.length){
-        console.log('PLAYER TWO WINS!');
-        return winner = true;
-    } else {
-        return winner = false;
-    }
-}
 
-// each player draws a card
-async function draw(playerOne, playerTwo, numCards){
-        for(let i = 0; i < numCards; i ++){
-            if(playerOne.length > 0 && playerTwo.length > 0){
-              let toTable1 = playerOne.shift();
-              let toTable2 = playerTwo.shift();
-              table.push(toTable1);
-              table.push(toTable2);
+    // Shuffles multiple times
+    shuffle() {
+        for (let i = 1; i < 5; i++) {
+            this.fischerYatesDurstenfeld();
+        }
+        return this.deck;
+    }
+
+    // Deals the entire this.deck of cards to players one and two
+    deal() {
+        while(this.deck.length > 0) {
+            let toPlayer1 = this.deck.splice(0, 1)[0];
+            this.playerOne.push(toPlayer1);
+
+            let toPlayer2 = this.deck.splice(0, 1)[0];
+            this.playerTwo.push(toPlayer2);
+        }
+    }
+
+    // Check for winner
+    async checkWinner() {
+        console.log('check winner', this.playerOne.length, this.playerTwo.length);
+        if(!this.playerTwo.length) {
+            console.log('PLAYER ONE WINS!');
+            this.winner = true;
+        } else if(!this.playerOne.length) {
+            console.log('PLAYER TWO WINS!');
+            this.winner = true;
+        } else {
+            this.winner = false;
+        }
+    }
+
+    // Each player draws a card
+    async draw(numCards) {
+        for(let i = 0; i < numCards; i++) {
+            if(this.playerOne.length > 0 && this.playerTwo.length > 0) {
+                let toTable1 = this.playerOne.shift();
+                let toTable2 = this.playerTwo.shift();
+                this.table.push(toTable1);
+                this.table.push(toTable2);
             }  
         }
-    return table;
-}
+        return this.table;
+    }
 
-//compares cards drawn by playerOne and playerTwo
-async function compareCards(){
-        if(!playerOne.length || !playerTwo.length){
-            return 'Yay'
+    // Compares cards drawn by playerOne and playerTwo
+    async compareCards() {
+        if(!this.playerOne.length || !this.playerTwo.length) {
+            return 'Yay';
         }
-        if(table[table.length-2].rank < table[table.length-1].rank){
-            let toPlayer2 = table.splice(0, table.length);
-            playerTwo.push(...toPlayer2);
+        if(this.table[this.table.length-2].rank < this.table[this.table.length-1].rank) {
+            let toPlayer2 = this.table.splice(0, this.table.length);
+            this.playerTwo.push(...toPlayer2);
             console.log('playerTwo won trick');
-        } else if(table[table.length-2].rank > table[table.length-1].rank){
-            let toPlayer1 = table.splice(0, table.length);
-            playerOne.push(...toPlayer1);
+        } else if(this.table[this.table.length-2].rank > this.table[this.table.length-1].rank) {
+            let toPlayer1 = this.table.splice(0, this.table.length);
+            this.playerOne.push(...toPlayer1);
             console.log('playerOne won trick');
         } else {
-            equalCards();
-            }
-        return playerOne, playerTwo, table;
-}
+            await this.equalCards();
+        }
+    }
 
-//Process of redrawing cards and comparing them again if they are equal
-async function equalCards(){
-    if(playerOne.length < 4){
-        return console.log('PLAYER TWO WINS!!!!');
-    } else if(playerTwo.length < 4){
-        return console.log('PLAYER ONE WINS!!!!')
-    } else {
-        console.log('EQUAL');
-        draw(playerOne, playerTwo, 4);
-        console.log('table: ', table);
-        console.log('table last two cards: ', table[table.length-1], table[table.length-2]);
-        compareCards();
-        return playerOne, playerTwo, table;
+    // Process of redrawing cards and comparing them again if they are equal
+    async equalCards() {
+        if(this.playerOne.length < 4) {
+            return console.log('PLAYER TWO WINS!!!!');
+        } else if(this.playerTwo.length < 4) {
+            return console.log('PLAYER ONE WINS!!!!');
+        } else {
+            console.log('EQUAL');
+            await this.draw(4);
+            console.log('table: ', this.table);
+            console.log('table last two cards: ', this.table[this.table.length-1], this.table[this.table.length-2]);
+            await this.compareCards();
+        }
+    }
+
+    // Plays war until a player wins
+    async play() {
+        await this.checkWinner();
+        while(this.winner === false) {
+            await this.draw(1);
+            console.log('No winner yet...table :', this.table);
+            await this.checkWinner();
+            if(this.winner === true) {
+                console.log('Game over');
+                break;
+            }
+            await this.compareCards();
+        }  
     }
 }
 
-// plays war until a player wins
-async function play(playerOne, playerTwo){
-    checkWinner(playerOne, playerTwo);
-        while(winner === false){
-            draw(playerOne, playerTwo, 1);
-            console.log(' No winner yet...table :', table);
-            checkWinner(playerOne, playerTwo);
-            if(winner === true){
-                console.log('Game over')
-                break
-            }
-            compareCards();
-        }  
-        
-}
+module.exports = Game;
+
 
 // playerOne.length > 0 && playerTwo.length > 0
-
-shuffle(deck);
-deal(deck);
-play(playerOne, playerTwo);
-
-console.log('player one hand: ', playerOne);
-console.log('player two hand: ', playerTwo);
-console.log('player One hand length: ', playerOne.length);
-console.log('player Two hand length: ', playerTwo.length);
-console.log('table length: ', table.length);
-console.log('deck length: ', deck.length);
-
-if(winner === true){
-    console.log('Turds')
-}

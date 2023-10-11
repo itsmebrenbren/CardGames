@@ -121,7 +121,3 @@ console.log('player One hand length: ', playerOne.length);
 console.log('player Two hand length: ', playerTwo.length);
 console.log('table length: ', table.length);
 console.log('deck length: ', deck.length);
-
-if(winner === true){
-    console.log('Turds')
-}

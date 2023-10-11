@@ -1,32 +1,40 @@
 let deck = require('./deckOfCards.js'); //imports deck into the game
-let playerOne = []; //establishes players
-let playerTwo = [];
-let table = [];
 
-//Fischer-Yates-Durstenfeld shuffle
-function fischerYatesDurstenfeld(deck) {
-    for (let i = 0; i < deck.length - 1; i++) {
-        let j = i + Math.floor(Math.random() * (deck.length - i));
-
-        let temp = deck[j];
-        deck[j] = deck[i];
-        deck[i] = temp;
+class Game {
+    constructor() {
+        // Initialize player decks and table
+        this.deck = deck;
+        this.playerOne = [];
+        this.playerTwo = [];
+        this.table = [];
+        this.winner = false;
     }
-    return deck;
-}
-//shuffles multiple times
-function shuffle(deck){
-    for(let i = 1; i < 5; i++){
-        fischerYatesDurstenfeld(deck);
-    }
-    return deck;
-}
 
-//deals the entire deck of cards to players one and two
-function deal(deck){
-    while(deck.length > 0){
-    let toPlayer1 = deck.splice(0, 1)[0];
-    playerOne.push(toPlayer1);
+    // Fischer-Yates-Durstenfeld shuffle
+    fischerYatesDurstenfeld() {
+        for (let i = 0; i < this.deck.length - 1; i++) {
+            let j = i + Math.floor(Math.random() * (this.deck.length - i));
+
+            let temp = this.deck[j];
+            this.deck[j] = this.deck[i];
+            this.deck[i] = temp;
+        }
+        return this.deck;
+    }
+
+    // Shuffles multiple times
+    shuffle() {
+        for (let i = 1; i < 5; i++) {
+            this.fischerYatesDurstenfeld();
+        }
+        return this.deck;
+    }
+
+    // Deals the entire this.deck of cards to players one and two
+    deal() {
+        while(this.deck.length > 0) {
+            let toPlayer1 = this.deck.splice(0, 1)[0];
+            this.playerOne.push(toPlayer1);
 
     let toPlayer2 = deck.splice(0, 1)[0];
     playerTwo.push(toPlayer2);
@@ -56,21 +64,21 @@ function draw(playerOne, playerTwo, numCards){
               table.push(toTable2);
             }  
         }
-    return table;
-}
+        return this.table;
+    }
 
 //compares cards drawn by playerOne and playerTwo
 function compareCards(){
         if(!playerOne.length || !playerTwo.length){
             return 'Yay'
         }
-        if(table[table.length-2].rank < table[table.length-1].rank){
-            let toPlayer2 = table.splice(0, table.length);
-            playerTwo.push(...toPlayer2);
+        if(this.table[this.table.length-2].rank < this.table[this.table.length-1].rank) {
+            let toPlayer2 = this.table.splice(0, this.table.length);
+            this.playerTwo.push(...toPlayer2);
             console.log('playerTwo won trick');
-        } else if(table[table.length-2].rank > table[table.length-1].rank){
-            let toPlayer1 = table.splice(0, table.length);
-            playerOne.push(...toPlayer1);
+        } else if(this.table[this.table.length-2].rank > this.table[this.table.length-1].rank) {
+            let toPlayer1 = this.table.splice(0, this.table.length);
+            this.playerOne.push(...toPlayer1);
             console.log('playerOne won trick');
         } else {
             equalCards();
@@ -105,10 +113,13 @@ function play(playerOne, playerTwo){
                 console.log('Game over')
                 break
             }
-            compareCards();
+            await this.compareCards();
         }  
-        
+    }
 }
+
+module.exports = Game;
+
 
 
 shuffle(deck);

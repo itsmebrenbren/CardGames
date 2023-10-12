@@ -47,7 +47,7 @@ class eWar{
                 Game.checkFace(this.table, this.face);
                 if(this.face === true){
                     Game.switchPlayer(this.currentPlayer, this.otherPlayer);
-                    Game.playFace();
+                    playFace();
                 }
             }
             Game.winnerTakesAll(this.table, this.currentPlayer);

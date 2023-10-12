@@ -1,6 +1,6 @@
 class Game {
 
-    // Establishes Ace high
+    // establishes ace high
     static aceHigh(deck){
         deck[0].rank = 14;
         deck[13].rank = 14;
@@ -55,22 +55,24 @@ class Game {
     static checkWinner52(playerOne, playerTwo, winner){
         if(!playerTwo.hand.length){
             console.log('PLAYER ONE WINS!');
-            return winner = true;
+            winner = true;
         } else if(!playerOne.hand.length){
             console.log('PLAYER TWO WINS!');
-            return winner = true;
+            winner = true;
         } else {
-            return winner = false;
+            winner = false;
         }
+        return winner;
     }
 
     // checks if drawn card is a face card
     static checkFace(table, face){
         if(table[table.length-1].rank >= 11){
-            return face = true;
+            face = true;
         } else {
-            return face = false;
+            face = false;
         }
+        return face;
     }
 
     // switches current player between playerOne and playTwo so that they take turns within the game
@@ -78,12 +80,11 @@ class Game {
         if(currentPlayer === playerOne){
             currentPlayer = playerTwo;
             otherPlayer = playerOne;
-            return currentPlayer, otherPlayer;
         } else if(currentPlayer === playerTwo){
             currentPlayer = playerOne;
             otherPlayer = playerTwo;
-            return currentPlayer, otherPlayer;
         }
+        return currentPlayer, otherPlayer;
     }
 
     static winnerTakesAll(table, currentPlayer){

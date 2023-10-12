@@ -1,12 +1,13 @@
-const War = require('./war.js'); // Imports Game class
+const war = require('./egyptianWar.js'); // Imports specific game class
+const game = require('./baseGameFunc.js'); // Imports general game functions
 
 // Create an instance of the Game class
-const game = new Game();
+const warGame = new war();
 
-// Game flow here
-game.shuffle();  
-game.deal();     
-game.play();     
+// Game flow
+game.shuffle(warGame.deck);  
+game.deal52(warGame.deck, warGame.playerOne, warGame.playerTwo);     
+war.play();     
 
 console.log('player one hand: ', game.playerOne);
 console.log('player two hand: ', game.playerTwo);

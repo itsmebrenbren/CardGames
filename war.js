@@ -4,7 +4,7 @@ let Game = require('./baseGameFunc.js');
 
 class War {
     constructor() {
-        // Initialize player decks and table
+        // initialize player decks and table
         this.deck = deck;
         this.playerOne = {
             'name' : 'One',
@@ -18,7 +18,7 @@ class War {
         this.winner = false;
     }
 
-    //compares cards drawn by playerOne and playerTwo
+    // compares cards drawn by playerOne and playerTwo
     static compareCards(){
             if(!this.playerOne.length || !this.playerTwo.length){
                 return
@@ -37,7 +37,7 @@ class War {
             return playerOne, playerTwo, table;
     }
 
-    //Process of redrawing cards and comparing them again if they are equal
+    // process of redrawing cards and comparing them again if they are equal
     static equalCards(){
         if(this.playerOne.length < 4){
             return console.log('PLAYER TWO WINS!!!!');

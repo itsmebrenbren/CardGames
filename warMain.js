@@ -1,4 +1,4 @@
-const Game = require('./war.js'); // Imports Game class
+const War = require('./war.js'); // Imports Game class
 
 // Create an instance of the Game class
 const game = new Game();

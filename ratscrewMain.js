@@ -16,7 +16,7 @@ console.log('Two : ', ratGame.playerTwo.hand.length);
 
 // console.log(ratGame.playerOne);
 
-rat.play(); // plays game
+// rat.play(); // plays game
 
 // console.log('One : ', ratGame.playerOne.hand.length);
 // console.log('Two : ', ratGame.playerTwo.hand.length); 

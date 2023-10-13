@@ -3,7 +3,7 @@ const deck = require('./deckOfCards.js');
 // imports base game functions into deck
 const Game = require('./baseGameFunc.js');
 
-class eWar{
+class rat{
     constructor() {
         // initialize player decks and table
         this.deck = deck;
@@ -107,4 +107,4 @@ class eWar{
     }
 }
 
-module.exports = eWar;
+module.exports =rat;

@@ -20,16 +20,16 @@ class War {
 
     // compares cards drawn by playerOne and playerTwo
     static compareCards(){
-            if(!this.playerOne.length || !this.playerTwo.length){
+            if(!playerOne.hand.length || !playerTwo.hand.length){
                 return
             }
-            if(this.table[this.table.length-2].rank < this.table[this.table.length-1].rank) {
-                let toPlayer2 = this.table.splice(0, this.table.length);
-                this.playerTwo.push(...toPlayer2);
+            if(table[table.length-2].rank < table[table.length-1].rank) {
+                let toPlayer2 = table.splice(0, table.length);
+                playerTwo.hand.push(...toPlayer2);
                 console.log('playerTwo won trick');
-            } else if(this.table[this.table.length-2].rank > this.table[this.table.length-1].rank) {
-                let toPlayer1 = this.table.splice(0, this.table.length);
-                this.playerOne.push(...toPlayer1);
+            } else if(table[table.length-2].rank > table[table.length-1].rank) {
+                let toPlayer1 = table.splice(0, table.length);
+                playerOne.hand.push(...toPlayer1);
                 console.log('playerOne won trick');
             } else {
                 equalCards();
@@ -39,29 +39,29 @@ class War {
 
     // process of redrawing cards and comparing them again if they are equal
     static equalCards(){
-        if(this.playerOne.length < 4){
+        if(playerOne.hand.length < 4){
             return console.log('PLAYER TWO WINS!!!!');
-        } else if(this.playerTwo.length < 4){
+        } else if(playerTwo.hand.length < 4){
             return console.log('PLAYER ONE WINS!!!!')
         } else {
             console.log('EQUAL');
-            draw(this.playerOne, this.table, 4);
-            draw(this.playerTwo, this.table, 4);
-            console.log('table: ', this.table);
-            console.log('table last two cards: ', this.table[this.table.length-1], this.table[this.table.length-2]);
+            draw(playerOne, table, 4);
+            draw(playerTwo, table, 4);
+            console.log('table: ', table);
+            console.log('table last two cards: ', table[table.length-1], table[table.length-2]);
             compareCards();
-            return this.playerOne, this.playerTwo, this.table;
+            return playerOne, playerTwo, table;
         }
     }
 
     // plays war until a player wins
-    static play(){
-        Game.checkWinner52(this.playerOne, this.playerTwo);
+    static play(table, playerOne, playerTwo, winner){
+        Game.checkWinner52(playerOne, playerTwo);
             while(winner === false){
-                Game.draw(this.playerOne, this.table, 1);
-                Game.draw(this.playerTwo, this.table, 1);
-                console.log(' No winner yet...table :', this.table);
-                Game.checkWinner52(this.playerOne, this.playerTwo);
+                Game.draw(playerOne, table, 1);
+                Game.draw(playerTwo, table, 1);
+                console.log(' No winner yet...table :', table);
+                Game.checkWinner52(playerOne, playerTwo);
                 if(winner === true){
                     console.log('Game over');
                     break

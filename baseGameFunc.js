@@ -40,7 +40,7 @@ class Game {
     }
 
     // player draws card(s)
-    static draw(player, table, numCards){
+    static draw(table, player, numCards){
         for(let i = 0; i < numCards; i ++){
             if(player.hand.length > 0){
             let toTable = player.hand.shift();
@@ -53,30 +53,33 @@ class Game {
 
     // check for winner
     static checkWinner52(playerOne, playerTwo, winner){
-        if(!playerTwo.hand.length){
+        console.log(playerOne.hand.length, playerTwo.hand.length)
+        if(playerTwo.hand.length < 1){
             console.log('PLAYER ONE WINS!');
             winner = true;
-        } else if(!playerOne.hand.length){
+        } else if(playerOne.hand.length < 1){
             console.log('PLAYER TWO WINS!');
             winner = true;
         } else {
             winner = false;
         }
-        return winner;
+        return winner
     }
 
     // checks if drawn card is a face card
     static checkFace(table, face){
+        console.log(table[table.length-1].rank);
         if(table[table.length-1].rank >= 11){
             face = true;
         } else {
             face = false;
         }
-        return face;
+        console.log(face + '1');
+        return;
     }
 
     // switches current player between playerOne and playTwo so that they take turns within the game
-    static switchPlayer(currentPlayer, otherPlayer){
+    static switchPlayer(currentPlayer, otherPlayer, playerOne, playerTwo){
         if(currentPlayer === playerOne){
             currentPlayer = playerTwo;
             otherPlayer = playerOne;

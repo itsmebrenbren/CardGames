@@ -12,11 +12,15 @@ game.deal52(ratGame.deck, ratGame.playerOne, ratGame.playerTwo); // deals deck t
 console.log('One : ', ratGame.playerOne.hand.length);
 console.log('Two : ', ratGame.playerTwo.hand.length);
 
-// game.draw(ratGame.playerOne, ratGame.table, 1);
+game.draw(ratGame.table, ratGame.playerOne, 1);
+
+game.checkFace(ratGame.table, ratGame.face);
+
+console.log(ratGame.face + '2');
 
 // console.log(ratGame.playerOne);
 
-// rat.play(); // plays game
+// rat.play(ratGame.table, ratGame.playerOne, ratGame.playerTwo, ratGame.currentPlayer, ratGame.otherPlayer, ratGame.winner, ratGame.face); // plays game
 
-// console.log('One : ', ratGame.playerOne.hand.length);
-// console.log('Two : ', ratGame.playerTwo.hand.length); 
+console.log('One : ', ratGame.playerOne.hand.length);
+console.log('Two : ', ratGame.playerTwo.hand.length); 

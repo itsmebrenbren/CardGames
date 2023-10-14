@@ -2,7 +2,7 @@ let deck = require('./deckOfCards.js'); //imports deck into the game
 // imports base game functions into deck
 let Game = require('./baseGameFunc.js');
 
-class War {
+class war {
     constructor() {
         // initialize player decks and table
         this.deck = deck;
@@ -15,11 +15,13 @@ class War {
             'hand' : []
         }
         this.table = [];
-        this.winner = false;
+        this.winner = {
+            'value' : false
+        }
     }
 
     // compares cards drawn by playerOne and playerTwo
-    static compareCards(){
+    static compareCards(table, playerOne, playerTwo){
             if(!playerOne.hand.length || !playerTwo.hand.length){
                 return
             }
@@ -32,45 +34,46 @@ class War {
                 playerOne.hand.push(...toPlayer1);
                 console.log('playerOne won trick');
             } else {
-                equalCards();
+                war.equalCards(table, playerOne, playerTwo);
                 }
             return playerOne, playerTwo, table;
     }
 
     // process of redrawing cards and comparing them again if they are equal
-    static equalCards(){
+    static equalCards(table, playerOne, playerTwo){
         if(playerOne.hand.length < 4){
             return console.log('PLAYER TWO WINS!!!!');
         } else if(playerTwo.hand.length < 4){
             return console.log('PLAYER ONE WINS!!!!')
         } else {
             console.log('EQUAL');
-            draw(playerOne, table, 4);
-            draw(playerTwo, table, 4);
-            console.log('table: ', table);
-            console.log('table last two cards: ', table[table.length-1], table[table.length-2]);
-            compareCards();
+            for(let i = 0; i < 4; i ++){
+                Game.draw(table, playerOne, 1);
+                Game.draw(table, playerTwo, 1);
+            }
+            console.log('table last two cards: ', table[table.length-2], table[table.length-1]);
+            war.compareCards(table, playerOne, playerTwo);
             return playerOne, playerTwo, table;
         }
     }
 
     // plays war until a player wins
     static play(table, playerOne, playerTwo, winner){
-        Game.checkWinner52(playerOne, playerTwo);
-            while(winner === false){
-                Game.draw(playerOne, table, 1);
-                Game.draw(playerTwo, table, 1);
-                console.log(' No winner yet...table :', table);
-                Game.checkWinner52(playerOne, playerTwo);
-                if(winner === true){
-                    console.log('Game over');
-                    break
-                }
-                this.compareCards();
-            }  
-        }
+        Game.checkWinner52(playerOne, playerTwo, winner);
+        while(winner.value === false){
+            Game.draw(table, playerOne, 1);
+            Game.draw(table, playerTwo, 1);
+            console.log(' No winner yet...table :', table);
+            Game.checkWinner52(playerOne, playerTwo, winner);
+            if(winner.value === true){
+                console.log('Game over');
+                break
+            }
+            war.compareCards(table, playerOne, playerTwo);
+        }  
+    }
 
 }
 
-module.exports = War;
+module.exports = war;
 

@@ -91,20 +91,21 @@ class rat{
 
     // plays the game
     static play(table, playerOne, playerTwo, currentPlayer, otherPlayer, winner, face){
-            while(winner.value === false){
-                Game.draw(table, currentPlayer, 1);
-                Game.checkFace(table, face);
-                Game.checkWinner52(playerOne, playerTwo, winner);
-                if(face.value === true){
-                    rat.playFace(table, playerOne, playerTwo, currentPlayer, otherPlayer, winner, face);
-                }
-                Game.switchPlayer(currentPlayer, otherPlayer);
-                if(winner.value === true){
-                    console.log(playerOne.hand.length, playerTwo.hand.length);
-                    console.log('Game over')
-                    break
-                }
-            }  
+        Game.checkWinner52(playerOne, playerTwo, winner);
+        while(winner.value === false){
+            Game.draw(table, currentPlayer, 1);
+            Game.checkFace(table, face);
+            Game.checkWinner52(playerOne, playerTwo, winner);
+            if(face.value === true){
+                rat.playFace(table, playerOne, playerTwo, currentPlayer, otherPlayer, winner, face);
+            }
+            Game.switchPlayer(currentPlayer, otherPlayer);
+            if(winner.value === true){
+                console.log(playerOne.hand.length, playerTwo.hand.length);
+                console.log('Game over')
+                break
+            }
+        }  
             
     }
 }

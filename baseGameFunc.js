@@ -56,26 +56,25 @@ class Game {
         console.log(playerOne.hand.length, playerTwo.hand.length)
         if(playerTwo.hand.length < 1){
             console.log('PLAYER ONE WINS!');
-            winner = true;
+            winner.value = true;
         } else if(playerOne.hand.length < 1){
             console.log('PLAYER TWO WINS!');
-            winner = true;
+            winner.value = true;
         } else {
-            winner = false;
+            winner.value = false;
         }
-        return winner
+        return winner.value
     }
 
     // checks if drawn card is a face card
     static checkFace(table, face){
-        console.log(table[table.length-1].rank);
         if(table[table.length-1].rank >= 11){
-            face = true;
+            face.value = true;
         } else {
-            face = false;
+            face.value = false;
         }
-        console.log(face + '1');
-        return;
+        console.log(face.value);
+        return face.value;
     }
 
     // switches current player between playerOne and playTwo so that they take turns within the game
@@ -90,12 +89,11 @@ class Game {
         return currentPlayer, otherPlayer;
     }
 
-    static winnerTakesAll(table, currentPlayer){
-        if(face === false){ // winner takes all the cards on the table, if no face card was drawn
+    static winnerTakesAll(table, currentPlayer, face){
+        if(face.value === false){ // winner takes all the cards on the table, if no face card was drawn
             let toPlayer = table.splice(0, table.length);
             currentPlayer.hand.push(...toPlayer);
             console.log(currentPlayer.name + ' WINS TRICK');
-            play(playerOne, playerTwo);
         }
     }
 

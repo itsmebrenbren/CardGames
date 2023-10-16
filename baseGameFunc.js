@@ -28,6 +28,29 @@ class Game {
         return deck;
     }
 
+    //finds who play order
+    static findPlayOrder(deck, table, currentPlayer, otherPlayer, playerOne, playerTwo, numCards){
+        for(let i = 0; i < numCards; i ++){
+        let toTable = deck[Math.floor(Math.random() * deck.length)];
+        table.push(toTable);
+        console.log('draw card: ', table);
+        }
+        if(table[table.length-1].rank > table[table.length-2].rank){
+            currentPlayer = playerTwo;
+            otherPlayer = playerOne;
+            let toDeck = table.splice(0, table.length);
+            deck.push(...toDeck);
+        } else if(table[table.length-1].rank < table[table.length-2].rank){
+            currentPlayer = playerOne;
+            otherPlayer = playerTwo;
+            let toDeck = table.splice(0, table.length);
+            deck.push(...toDeck);
+        } else {
+            findPlayerOrder(deck, table, currentPlayer, otherPlayer, playerOne, playerTwo, numCards)
+        }
+        console.log(currentPlayer.name + ' goes first!'); 
+    }
+
     // deals the entire deck of cards to players one and two
     static deal52(deck, playerOne, playerTwo){
         while(deck.length > 0){

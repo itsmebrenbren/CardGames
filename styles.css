@@ -22,6 +22,7 @@
   h2 {
     font-family: opendyslexic;
     margin: 2%;
+    color: #FFFFFF;
   }
 
   .menu-container {
@@ -31,6 +32,8 @@
     align-items: center;
     list-style-type: none;
     overflow: hidden;
+    top: 0;
+    width: 100%;
     margin: 0;
   }
 

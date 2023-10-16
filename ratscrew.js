@@ -8,11 +8,11 @@ class rat{
         // initialize player decks and table
         this.deck = deck;
         this.playerOne = {
-            'name' : 'One',
+            'name' : 'Computer',
             'hand' : []
         }
         this.playerTwo = {
-            'name' : 'Two',
+            'name' : 'Human',
             'hand' : []
         }
         this.table = [];
@@ -99,7 +99,7 @@ class rat{
             if(face.value === true){
                 rat.playFace(table, playerOne, playerTwo, currentPlayer, otherPlayer, winner, face);
             } else {
-            Game.switchPlayer(currentPlayer, otherPlayer);
+            Game.switchPlayer(currentPlayer, otherPlayer, playerOne, playerTwo);
             }
             if(winner.value === true){
                 console.log(playerOne.hand.length, playerTwo.hand.length);

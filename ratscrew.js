@@ -1,7 +1,7 @@
 // imports deck into game
-const deck = require('./deckOfCards.mjs');
+const deck = require('./deckOfCards.js');
 // imports base game functions into deck
-const Game = require('./baseGameFunc.mjs');
+const Game = require('./baseGameFunc.js');
 
 export default class rat{
     constructor() {

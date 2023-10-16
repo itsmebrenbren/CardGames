@@ -89,11 +89,11 @@ class Game {
         return currentPlayer, otherPlayer;
     }
 
-    static winnerTakesAll(table, player, face){
+    static winnerTakesAll(table, currentPlayer, face){
         if(face.value === false){ // winner takes all the cards on the table, if no face card was drawn
             let toPlayer = table.splice(0, table.length);
-            player.hand.push(...toPlayer);
-            console.log(player.name + ' WINS TRICK');
+            currentPlayer.hand.push(...toPlayer);
+            console.log(currentPlayer.name + ' WINS TRICK');
         }
     }
 

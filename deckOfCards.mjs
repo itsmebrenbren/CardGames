@@ -58,9 +58,10 @@ const cJ = {suit: 'clubs', rank: 11, cardFront: "cards/jack_of_clubs2.png", card
 const cQ = {suit: 'clubs', rank: 12, cardFront: "cards/queen_of_clubs2.png", cardBack: "cards/red_joker.png"}; //queen
 const cK = {suit: 'clubs', rank: 13, cardFront: "cards/king_of_clubs2.png", cardBack: "cards/red_joker.png"}; //king
 
-const deck = [hA, h2, h3, h4, h5, h6, h7, h8, h9, h10, hJ, hQ, hK,  
+
+export default deck = [hA, h2, h3, h4, h5, h6, h7, h8, h9, h10, hJ, hQ, hK,  
     sA, s2, s3, s4, s5, s6, s7, s8, s9, s10, sJ, sQ, sK,  
     dA, d2, d3, d4, d5, d6, d7, d8, d9, d10, dJ, dQ, dK,  
     cA, c2, c3, c4, c5, c6, c7, c8, c9, c10, cJ, cQ, cK];
 
-module.exports = deck;
+// module.exports = deck;

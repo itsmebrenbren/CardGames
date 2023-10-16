@@ -1,5 +1,5 @@
-const rat = require('./ratscrew.js'); // Imports specific game class
-const game = require('./baseGameFunc.js'); // Imports general game functions
+const rat = require('./ratscrew.mjs'); // Imports specific game class
+const game = require('./baseGameFunc.mjs'); // Imports general game functions
 
 // Creates instance of the Game class
 const ratGame = new rat();

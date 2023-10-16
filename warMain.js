@@ -1,5 +1,5 @@
 const war = require('./war.js'); // Imports specific game class
-const game = require('./baseGameFunc.js'); // Imports general game functions
+const game = require('./baseGameFunc.mjs'); // Imports general game functions
 
 // Creates instance of the Game class
 const warGame = new war();

@@ -1,6 +1,6 @@
-let deck = require('./deckOfCards.js'); //imports deck into the game
+let deck = require('./deckOfCards.mjs'); //imports deck into the game
 // imports base game functions into deck
-let Game = require('./baseGameFunc.js');
+let Game = require('./baseGameFunc.mjs');
 
 class war {
     constructor() {

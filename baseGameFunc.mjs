@@ -1,4 +1,4 @@
-class Game {
+export default class Game {
 
     // establishes ace high
     static aceHigh(deck){
@@ -122,4 +122,4 @@ class Game {
 
 }    
 
-module.exports = Game
+// module.exports = Game

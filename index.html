@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog-a-doo Card Games</title>
     <link rel = "stylesheet" type = "text/css" href = "styles.css">
+    <script src = "deckOfCards.js"></script>
 </head>
 <body>  
     <div class = "menu-container">
@@ -14,19 +15,45 @@
         <button class = "button">How do I play this?!?!</button>
     </div>
     <div class = "top-container">
-        <h2>Computer</h2>
-        <div class = "box"></div>
+        <div class = "middle-box"></div>
+        <div class = "middle-box">
+            <img id = "computer" style = "max-width: 180px; max-height: 180px;"/>
+        </div>
+        <div class = "middle-box" style = "align-items: flex-end; justify-content: right;">
+            <h2>Computer</h2>
+        </div>
     </div>
     <div class = "middle-container">
         <div class = "middle-box"></div>
-        <div class = "middle-box"></div>
+        <div class = "middle-box">
+            <img id = "table" style = "max-width: 200px; max-height: 200px;"/>
+        </div>
         <div class = "middle-box"></div>
     </div>
     <div class = "bottom-container">
-        <h2>Human</h2>
-        <button class = "button">Play Card</button>
-        <div class = "box"></div>
+        <div class = "middle-box"></div>
+        <div class = "middle-box">
+            <img id = "human" style = "max-width: 180px; max-height: 180px;"/>
+        </div>
+        <div class = "middle-box" style = "align-items: flex-end; justify-content: right;">
+            <button class = "button">Play Card</button>
+            <h2>Human</h2>
+        </div>
     </div>
-    
+    <script>
+
+        function displayCard(){
+            let tableImageElement = document.getElementById("table");
+            let computerImageElement = document.getElementById("computer");
+            let humanImageElement = document.getElementById("human");
+            tableImageElement.src = deck[deck.length-1].cardFront;
+            computerImageElement.src = deck[deck.length-1].cardBack;
+            humanImageElement.src = deck[deck.length-1].cardBack;
+        }
+        document.addEventListener("DOMContentLoaded", function(){
+            displayCard();
+        });
+
+    </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 {
-    "watch": ["*.html", "css/*", "js/*"],
+    "watch": ["*.html", "css/*", "js/*","mjs/*"],
     "ext": "html,js,css",
     "exec": "http-server"
 }

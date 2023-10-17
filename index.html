@@ -5,16 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog-a-doo Card Games</title>
     <link rel = "stylesheet" type = "text/css" href = "styles.css">
-    <script src = "deckOfCards.mjs" type = "module" defer></script>
-    <script src = "baseGameFunc.mjs" type = "module" defer></script>
-    <script src = "ratscrew.mjs" type = "module" defer></script>
-    <script> 
-        import deck from "./deckOfCards.mjs";
-        import rat from "./ratscrew.mjs";
-        import Game from "./baseGameFunc.mjs";
-        const ratGame = new rat();
-        console.log(rat);
-    </script>
+    <script src="main.mjs" type="module" defer></script>
 </head>
 <body>  
     <div class = "menu-container">
@@ -49,8 +40,10 @@
             <h2>Human</h2>
         </div>
     </div>
-    <script>
-        function displayCard(){
+    <script src="main.mjs" type="module" defer>
+        import { ratGame } from './main.mjs';
+        console.log(ratGame.deck)
+        /*function displayCard(){
             let tableImageElement = document.getElementById("table");
             let computerImageElement = document.getElementById("computer");
             let humanImageElement = document.getElementById("human");
@@ -58,6 +51,7 @@
             computerImageElement.src = deck[deck.length-1].cardBack;
             humanImageElement.src = deck[deck.length-1].cardBack;
         }
+        
         document.addEventListener("DOMContentLoaded", function(){
             // game.aceHigh(ratGame.deck); // establishes ace high
             // game.shuffle(ratGame.deck); // shuffles deck
@@ -66,9 +60,9 @@
             // game.deal52(ratGame.deck, ratGame.playerOne, ratGame.playerTwo);
             displayCard();
             console.log(ratGame.deck);
-            console.log(rat);
+            // console.log(rat);
         });
-
+*/
     </script>
 </body>
 </html>

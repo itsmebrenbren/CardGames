@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import TopBottomContainer from './components/TopBottomContainer.jsx';
+import MiddleContainer from './components/MiddleContainer.jsx';
+import Box from './components/Box.jsx';
+import Button from './components/Button.jsx';
+import Menu from './components/Menu.jsx';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Menu></Menu>
+      <TopBottomContainer>
+        <Box></Box>
+        <Box></Box>
+        <Box>
+          <h2>Computer</h2>
+        </Box>
+      </TopBottomContainer>
+      <MiddleContainer>
+        <Box></Box>
+        <Box></Box>
+        <Box></Box>
+      </MiddleContainer>
+      <TopBottomContainer>
+        <Box></Box>
+        <Box></Box>
+        <Box>
+          <Button>Play Card</Button>
+          <h2>Human</h2>
+        </Box>
+      </TopBottomContainer>
     </div>
   );
 }

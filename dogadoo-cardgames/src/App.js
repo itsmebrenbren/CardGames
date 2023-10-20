@@ -9,6 +9,7 @@ import Menu from './visuals/Menu.jsx';
 //import StartButton from './components/visuals/StartButton';
 import InitRat from './ratscrew/InitRat.jsx';
 
+console.log(InitRat)
 
 
 function App() {

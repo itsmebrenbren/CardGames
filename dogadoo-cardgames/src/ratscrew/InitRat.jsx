@@ -1,9 +1,12 @@
 import React from 'react';
 import Deck from '../data/deckOfCards.js';
-import AceHigh from "../components/AceHigh.js";
+import aceHigh from '../components/AceHigh.js';
 // import StartButton from "./visuals/StartButton.jsx";
 
-const deck = Deck;
+let deck = Deck;
+
+deck = aceHigh(deck)
+
 const playerOne =  {
     'name' : 'Computer',
     'hand' : []
@@ -39,10 +42,6 @@ class InitRat extends React.Component {
     }
 }
 
-componentDidMount(); {
-    AceHigh(this.state.ratGame.deck);
-    console.log(this.state.ratGame.deck.rank);
-}
-
+console.log(InitRat)
 
 export default InitRat;

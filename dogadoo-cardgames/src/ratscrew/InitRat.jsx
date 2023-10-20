@@ -1,6 +1,6 @@
 import React from 'react';
-import Deck from './data/deckOfCards.js';
-import AceHigh from "./components/AceHigh.js";
+import Deck from '../data/deckOfCards.js';
+import AceHigh from "../components/AceHigh.js";
 // import StartButton from "./visuals/StartButton.jsx";
 
 const deck = Deck;

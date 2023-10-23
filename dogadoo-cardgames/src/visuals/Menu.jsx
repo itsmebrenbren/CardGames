@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from "./Button.jsx";
+// import InitRat from "../ratscrew/InitRat.js"
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ const Menu = () => {
           <button className = "button" onClick = { toggleGame }>Change Game</button>
           {gameMenuOpen ? (
             <div className = "change-game-container">
-              <Button>Egyptian War</Button>
+              <button className = "button">Egyptian War</button>
               <Button>War</Button>
             </div>
           ): null}

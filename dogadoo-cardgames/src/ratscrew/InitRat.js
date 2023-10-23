@@ -24,24 +24,25 @@ const winner = {
 const face = {
     'value' : false
 }
+const message = '';
 
 
 class InitRat extends React.Component {
     constructor(props) {
         super(props);
-        this.ratGame = {
-            deck : deck,
-            playerOne : playerOne,
-            playerTwo : playerTwo,
-            currentPlayer : currentPlayer,
-            otherPlayer : otherPlayer,
-            table : table,
-            winner : winner,
-            face : face,
-        }
+        this.deck = deck,
+        this.playerOne = playerOne,
+        this.playerTwo = playerTwo,
+        this.currentPlayer = currentPlayer,
+        this.otherPlayer = otherPlayer,
+        this.table = table,
+        this.winner = winner,
+        this.face = face,
+        this.message = message
     }
 }
 
-console.log(InitRat)
+const ratInstance = new InitRat();
+console.log(ratInstance);
 
-export default InitRat;
+export default ratInstance;

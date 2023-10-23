@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StartGame from './StartGame'; // Import your StartGame component
+
 
 const StartButton = () => {
   const [buttonVisible, setButtonVisible] = useState(true); //initializes buttonVisible variable to true using the useState hook

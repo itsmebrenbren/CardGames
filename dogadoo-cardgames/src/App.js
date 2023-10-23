@@ -4,12 +4,17 @@ import TopBottomContainer from './visuals/TopBottomContainer.jsx';
 import MiddleContainer from './visuals/MiddleContainer.jsx';
 import Box from './visuals/Box.jsx';
 import CenterBox from './visuals/CenterBox.jsx';
+import addMessage from './visuals/AddMessage.jsx';
+import TextBox from './visuals/TextBox.jsx';
 import Button from './visuals/Button.jsx';
 import Menu from './visuals/Menu.jsx';
 //import StartButton from './components/visuals/StartButton';
-import InitRat from './ratscrew/InitRat.jsx';
-
-console.log(InitRat)
+let currentPlayer = {
+  'name' : 'computer'
+}
+let message = '';
+message = addMessage('welcome u*.*u');
+//message = addMessage('your turn!');
 
 
 function App() {
@@ -24,7 +29,9 @@ function App() {
         </Box>
       </TopBottomContainer>
       <MiddleContainer>
-        <Box></Box>
+        <Box>
+          <TextBox>{ message }</TextBox>
+        </Box>
         <CenterBox>
         </CenterBox>
         <Box></Box>

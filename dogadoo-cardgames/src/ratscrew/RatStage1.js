@@ -1,13 +1,13 @@
 import computersTurn from '../components/ComputersTurn';
 import humansTurn from '../components/HumansTurn';
-import checkPhase from './CheckPhase';
+import checkStage from './CheckStage';
 
-export default function phase1(currentPlayer, playerOne, playerTwo) {
+export default function ratStage1(currentPlayer, playerOne, playerTwo) {
     if(currentPlayer === playerOne){
         computersTurn();
-        checkPhase();
+        checkStage();
     }if(currentPlayer === playerTwo){
         humansTurn();
-        checkPhase();
+        checkStage();
     }
 }

@@ -1,5 +1,5 @@
 import ratInstance from './InitRat';
 
-export default function phase2(){
+export default function ratStage1(){
     
 }

@@ -1,5 +1,10 @@
-/*export default function addMessage(message){
+import TextBox from "./TextBox";
+
+const Message = ({addMessage}) => {
+
+
     return(
-        message
-    )
-}*/
+        <TextBox>{ addMessage }</TextBox>
+    );
+};
+export default Message;

@@ -30,7 +30,8 @@ h2 {
 }
 
 .menu-container {
-  position:fixed;
+  flex: 1;
+  position: fixed;
   justify-content: center;
   align-items: center;
   list-style-type: none;
@@ -41,19 +42,19 @@ h2 {
 }
 
 .change-game-container {
-  position:fixed;
-  justify-content: center;
+  flex: 1;
+  position: fixed;
+  justify-content: space-between;
   align-items: center;
   list-style-type: none;
   overflow: hidden;
-  top: 18.5%;
-  width: 100%;
-  margin: 0;
+  top: 16%;
+  width: auto;
 }
 
 .top-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   height: 200px;
   border: 1px solid #ddd;
@@ -131,5 +132,31 @@ h2 {
 
 .button:active {
   box-shadow: 0px 0px #FFFFFF;
+  transform: translateY(4px);
+}
+
+.button2 {
+  background-color: #444443;
+  color: #ffecb8;
+  text-align: center;
+  font-family: opendyslexic;
+  font-size: 20px;
+  width: auto;
+  padding: 10px 10px;
+  border-radius: 4px;
+  border: 2px solid #444443;
+  margin: 5px;
+  transition: all 0.5s;
+  cursor: pointer;
+  box-shadow: 0px 0px #ffecb8;
+}
+
+.button2:hover {
+  box-shadow: 0 9px #ffecb8;
+  transform: translateY(-4px);
+}
+
+.button2:active {
+  box-shadow: 0px 0px #ffecb8;
   transform: translateY(4px);
 }

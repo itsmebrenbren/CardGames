@@ -1,17 +1,14 @@
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import TopBottomContainer from './visuals/TopBottomContainer.jsx';
 import MiddleContainer from './visuals/MiddleContainer.jsx';
 import Box from './visuals/Box.jsx';
 import CenterBox from './visuals/CenterBox.jsx';
 //import addMessage from './visuals/AddMessage.jsx';
-import TextBox from './visuals/TextBox.jsx';
+//import Message from './visuals/AddMessage';
+//import TextBox from './visuals/TextBox.jsx';
 import Button from './visuals/Button.jsx';
 import Menu from './visuals/Menu.jsx';
-//import StartButton from './components/visuals/StartButton';
-//import TableHand from './visuals/TableHand';
-//import HumanHand from './visuals/HumanHand';
-import ComputerHand from './visuals/ComputerHand';
 //import ratInstance from './ratscrew/InitRat';
 
 
@@ -22,6 +19,7 @@ import ComputerHand from './visuals/ComputerHand';
 function App() {
   //ratStart();
   const [gameState, setGameState] = useState(null);
+  const [message, setMessage] = useState('hello');
 
   const handleGameStart = (gameData) => {
     setGameState(gameData);
@@ -31,12 +29,20 @@ function App() {
     console.log('gameState has changed:', gameState);
   }, [gameState]);
 
-  let message = '';
   console.log(gameState)
+
+  console.log(message);
+
+  let announce = 'welcome u*.*u';
+
+  function handleMessage(){
+    setMessage(announce);
+  }
+
 
   return (
     <div>
-      <Menu onGameStart={handleGameStart}></Menu>
+      <Menu onGameStart = { handleGameStart }></Menu>
       <TopBottomContainer>
         <Box></Box>
         <CenterBox>
@@ -47,7 +53,7 @@ function App() {
       </TopBottomContainer>
       <MiddleContainer>
         <Box>
-          <TextBox>{message}</TextBox>
+          <div onClick = { handleMessage } className = 'text-box'>{ message }</div>
         </Box>
         <CenterBox>
           <div>

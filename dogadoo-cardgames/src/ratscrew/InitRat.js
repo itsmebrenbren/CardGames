@@ -42,6 +42,6 @@ class InitRat extends React.Component {
         this.face = face,
         this.message = message
     }
-}
+} 
 
 export default InitRat;

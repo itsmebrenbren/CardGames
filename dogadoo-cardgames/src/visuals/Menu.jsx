@@ -18,8 +18,15 @@ const Menu = ({ onGameStart }) => {
   const handleRatStart = () => {
     const gameData = ratStart(); // Assuming ratStart returns the game data
     onGameStart(gameData); // Update the state in the parent component
-    console.log(gameData)
+    console.log(gameData);
+    toggleGame();
+    toggleMenu();
   };
+
+  const handleWarStart = () => {
+    toggleGame();
+    toggleMenu();
+  }
 
   return (
     <div className = "menu-container">
@@ -29,10 +36,10 @@ const Menu = ({ onGameStart }) => {
           <Button>New Game</Button>
           <button className = "button" onClick = { toggleGame }>Change Game</button>
           {gameMenuOpen ? (
-            <div className = "change-game-container">
-              <button onClick = {handleRatStart} className = "button">Egyptian War</button>
-              <Button>War</Button>
-            </div>
+            <ul className = "change-game-container">
+              <li onClick = { handleRatStart } className = "button2">Egyptian War</li>
+              <li onClick = { handleWarStart } className = "button2">War</li>
+            </ul>
           ): null}
           <Button>How do I play this?!?!</Button>
         </div>

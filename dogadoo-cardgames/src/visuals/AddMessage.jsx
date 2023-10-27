@@ -1,5 +1,5 @@
-export default function addMessage(message){
+/*export default function addMessage(message){
     return(
         message
     )
-}
+}*/

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Button from "./Button.jsx";
 // import InitRat from "../ratscrew/InitRat.js"
+import ratStart from '../ratscrew/RatscrewStart';
 
-const Menu = () => {
+const Menu = ({ onGameStart }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [gameMenuOpen, setGameMenuOpen] = useState(false);
 
@@ -14,6 +15,12 @@ const Menu = () => {
     setGameMenuOpen(!gameMenuOpen);
   };
 
+  const handleRatStart = () => {
+    const gameData = ratStart(); // Assuming ratStart returns the game data
+    onGameStart(gameData); // Update the state in the parent component
+    console.log(gameData)
+  };
+
   return (
     <div className = "menu-container">
       <button className = "button" onClick = { toggleMenu }>Menu</button>
@@ -23,7 +30,7 @@ const Menu = () => {
           <button className = "button" onClick = { toggleGame }>Change Game</button>
           {gameMenuOpen ? (
             <div className = "change-game-container">
-              <button className = "button">Egyptian War</button>
+              <button onClick = {handleRatStart} className = "button">Egyptian War</button>
               <Button>War</Button>
             </div>
           ): null}

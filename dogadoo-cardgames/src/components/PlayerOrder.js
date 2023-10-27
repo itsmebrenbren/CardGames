@@ -1,4 +1,4 @@
-import addMessage from './visuals/AddMessage.jsx';
+//import addMessage from './visuals/AddMessage.jsx';
 
 //finds out who plays first
 export default function findPlayOrder(deck, table, currentPlayer, otherPlayer, playerOne, playerTwo, numCards){
@@ -18,7 +18,8 @@ export default function findPlayOrder(deck, table, currentPlayer, otherPlayer, p
         let toDeck = table.splice(0, table.length);
         deck.push(...toDeck);
     } else {
-        findPlayerOrder(deck, table, currentPlayer, otherPlayer, playerOne, playerTwo, numCards)
+        // eslint-disable-next-line no-undef
+        //findPlayerOrder(deck, table, currentPlayer, otherPlayer, playerOne, playerTwo, numCards)
     }
-    addMessage(currentPlayer.name + ' goes first!'); 
+    //addMessage(currentPlayer.name + ' goes first!'); 
 }

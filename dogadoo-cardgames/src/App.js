@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import TopBottomContainer from './visuals/TopBottomContainer.jsx';
 import MiddleContainer from './visuals/MiddleContainer.jsx';
 import Box from './visuals/Box.jsx';
@@ -9,27 +9,37 @@ import TextBox from './visuals/TextBox.jsx';
 import Button from './visuals/Button.jsx';
 import Menu from './visuals/Menu.jsx';
 //import StartButton from './components/visuals/StartButton';
-import TableHand from './visuals/TableHand';
-import HumanHand from './visuals/HumanHand';
+//import TableHand from './visuals/TableHand';
+//import HumanHand from './visuals/HumanHand';
 import ComputerHand from './visuals/ComputerHand';
-import ratStart from './ratscrew/RatscrewStart';
+//import ratInstance from './ratscrew/InitRat';
 
-// const message = addMessage('welcome u*.*u');
+
+//const message = addMessage('welcome u*.*u');
 //message = addMessage('your turn!');
 
 
 function App() {
-  ratStart();
-  let message = '';
+  //ratStart();
+  const [gameState, setGameState] = useState(null);
 
+  const handleGameStart = (gameData) => {
+    setGameState(gameData);
+  };
+
+  useEffect(() => {
+    console.log('gameState has changed:', gameState);
+  }, [gameState]);
+
+  let message = '';
+  console.log(gameState)
 
   return (
     <div>
-      <Menu></Menu>
+      <Menu onGameStart={handleGameStart}></Menu>
       <TopBottomContainer>
         <Box></Box>
         <CenterBox>
-          <ComputerHand></ComputerHand>
         </CenterBox>
         <Box>
           <h2>Computer</h2>
@@ -37,17 +47,18 @@ function App() {
       </TopBottomContainer>
       <MiddleContainer>
         <Box>
-          <TextBox>{ message }</TextBox>
+          <TextBox>{message}</TextBox>
         </Box>
         <CenterBox>
-          <TableHand></TableHand>
+          <div>
+            
+          </div>
         </CenterBox>
         <Box></Box>
       </MiddleContainer>
       <TopBottomContainer>
         <Box></Box>
         <CenterBox>
-          <HumanHand></HumanHand>
         </CenterBox>
         <Box>
           <Button>Play Card</Button>

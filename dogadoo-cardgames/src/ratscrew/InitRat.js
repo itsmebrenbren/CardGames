@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import React from 'react';
 import Deck from '../data/deckOfCards.js';
 import aceHigh from '../components/AceHigh.js';
@@ -30,6 +31,7 @@ const message = '';
 class InitRat extends React.Component {
     constructor(props) {
         super(props);
+        // eslint-disable-next-line no-unused-expressions
         this.deck = deck,
         this.playerOne = playerOne,
         this.playerTwo = playerTwo,
@@ -42,7 +44,4 @@ class InitRat extends React.Component {
     }
 }
 
-const ratInstance = new InitRat();
-console.log(ratInstance);
-
-export default ratInstance;
+export default InitRat;

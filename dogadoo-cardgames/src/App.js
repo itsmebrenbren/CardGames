@@ -1,5 +1,8 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { ratscrewAtom } from './atoms/RatscrewAtom.js';
+import { useAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
 import TopBottomContainer from './visuals/TopBottomContainer.jsx';
 import MiddleContainer from './visuals/MiddleContainer.jsx';
 import Box from './visuals/Box.jsx';
@@ -12,32 +15,20 @@ import Menu from './visuals/Menu.jsx';
 //import ratInstance from './ratscrew/InitRat';
 
 
-//const message = addMessage('welcome u*.*u');
-//message = addMessage('your turn!');
-
 
 function App() {
-  //ratStart();
-  const [gameState, setGameState] = useState(null);
-  const [message, setMessage] = useState('hello');
+  const [rat, setRat] = useAtom(ratscrewAtom);
 
-  const handleGameStart = (gameData) => {
-    setGameState(gameData);
+  const updateMessage = () => {
+    setRat((prevRat) => ({
+      ...prevRat,
+      message: "welcome u*.*u",
+    }));
   };
 
-  useEffect(() => {
-    console.log('gameState has changed:', gameState);
-  }, [gameState]);
+  const handleGameStart = () => {
+  };
 
-  console.log(gameState)
-
-  console.log(message);
-
-  let announce = 'welcome u*.*u';
-
-  function handleMessage(){
-    setMessage(announce);
-  }
 
 
   return (
@@ -53,7 +44,7 @@ function App() {
       </TopBottomContainer>
       <MiddleContainer>
         <Box>
-          <div onClick = { handleMessage } className = 'text-box'>{ message }</div>
+          <div className = 'text-box' onClick = { updateMessage }>{ rat.message }</div>
         </Box>
         <CenterBox>
           <div>
